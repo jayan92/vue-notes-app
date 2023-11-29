@@ -20,7 +20,7 @@
       </div>
 
       <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showNavBarMenu }">
-        <div class="navbar-end">
+        <div v-if="authStore.user.uid" class="navbar-end">
           <RouterLink
             :to="{ name: 'notes' }"
             active-class="is-active"
@@ -41,7 +41,7 @@
 
           <a href="#" active-class="is-active" class="navbar-item" @click="menuAction"> + Add a Note </a>
 
-          <div v-if="authStore.user.uid">
+          <div>
             <button class="button is-info is-small mt-3 ml-3" @click.prevent="onLogout">
               Logout {{ authStore.user.email }}
             </button>
